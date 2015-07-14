@@ -1,0 +1,24 @@
+{
+  "name": "ljspgp",
+  "version": "0.0.1",
+  "description": "js pgp library",
+  "main": "js/index.js",
+  "dependencies": {
+    "browserify": "^10.2.6",
+    "node": "^0.0.0",
+    "steroids": "^4.1.8",
+    "bignum": "^0.10.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rsa",
+    "pgp",
+    "pem",
+    "encryption"
+  ],
+  "author": "Oscar Linde",
+  "license": "MIT"
+}
