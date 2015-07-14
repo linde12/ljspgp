@@ -2,7 +2,7 @@
   "name": "ljspgp",
   "version": "0.0.1",
   "description": "js pgp library",
-  "main": "js/index.js",
+  "main": "index.js",
   "dependencies": {
     "browserify": "^10.2.6",
     "node": "^0.0.0",
