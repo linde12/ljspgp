@@ -1,19 +1,10 @@
 var bignum = require('bignum'),
-    getPem = require('./rsaPublicKeyPem');
+    getPem = require('./rsaPublicKeyPem'),
+    RSAPublicKey = require('./RSAPublicKey');
 
 var RSA = function () {
 
     var API = {
-        isPrime: function (number) {
-            var sqRoot = Math.sqrt(number);
-            for (var i = 2; i <= sqRoot; i++) {
-                if (number % i == 0) {
-                    return false;
-                }
-            }
-            return true;
-        },
-
         getTotient: function (prime1, prime2) {
             return (prime1.sub(1)).mul(prime2.sub(1));
         },
@@ -80,14 +71,12 @@ var RSA = function () {
             console.log("d: ", d.toString());
 
             return {
-                publicKey: {
-                    n: n,
-                    e: e
-                },
-                privateKey: {
-                    n: n,
-                    d: d
-                }
+                // Modulus
+                n: n,
+                // Public exponent(encryption key)
+                e: e,
+                // Private exponent(decryption key)
+                d: d
             };
         }
 
@@ -96,16 +85,31 @@ var RSA = function () {
     return API;
 };
 
+console.log(new Buffer("b3NjYXI=", 'base64').toString());
+
+var pub = new RSAPublicKey("BADelitpUqMZLn+bryZR5rK9J3eu+pRVFP5tpboOlIwO2vqO/rCi8VvT2TPzEJarWhyZ465NIohYCiia9vaGUEp4rsDzFnVNgpON47yPew1zCmOOofituf+X6Qlaxylm5NnO4vnRcmoF4IbGwSCqyGgGor29D75Hovwlj1q6BWHYWwAGKQ==");
+
+/*
 var rsa = new RSA();
 
 var keypair = rsa.createRSA(bignum.prime(512), bignum.prime(512));
-console.log("bitLength = " + keypair.publicKey.n.bitLength());
+console.log("bitLength = " + keypair.n.bitLength());
 
-var n = keypair.publicKey.n; // .toBuffer().toString('base64');
-var e = keypair.publicKey.e; // .toBuffer().toString('base64');
+var n = keypair.n; // .toBuffer().toString('base64');
+var e = keypair.e; // .toBuffer().toString('base64');
+
+var publicKey = {
+    n: keypair.n,
+    e: keypair.e
+};
+
+var privateKey = {
+    n: keypair.n,
+    d: keypair.d
+};
 
 console.log(getPem(n.toBuffer().toString('base64'), e.toBuffer().toString('base64')));
 
-var c = rsa.encrypt("kingkaew", keypair.publicKey);
-console.log(c);
-console.log("decrypted: ", rsa.decrypt(c, keypair.privateKey));
+var c = rsa.encrypt("kingkaew", publicKey);
+//console.log(c);
+console.log("decrypted: ", rsa.decrypt(c, privateKey));*/

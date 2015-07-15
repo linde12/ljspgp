@@ -4,9 +4,6 @@
   "description": "js pgp library",
   "main": "index.js",
   "dependencies": {
-    "browserify": "^10.2.6",
-    "node": "^0.0.0",
-    "steroids": "^4.1.8",
     "bignum": "^0.10.2"
   },
   "devDependencies": {},
